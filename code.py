@@ -76,6 +76,21 @@ def search_extensive(es_object,index_name,salary):
     result = es_object.search(index=index_name,body=json.dumps(search_object))
     print(result)
 
+    
+    
+ curl -POST http://localhost:9200/my_index/my_type -curl -H 'Content-Type: application/json' -d '{"user":"Phil","message":"Hello World!"}'
+ # request
+curl -GET http://localhost:9200/my_index/my_type/G123
+
+# response
+{"_index":"my_index","_type":"my_type","_id":"G123","_version":2,"found":true,"_source":{"user":"Phil","message":"Hello, World!" }}
+# request
+curl -PUT http://localhost:9200/my_index/my_type/G123?version=1 -curl -H 'Content-Type: application/json' -d '{"user":"Phil","message":"Hello, World!"}'
+
+# response
+{"_index":"my_index","_type":"my_type","_id":"G123","_version":2,"result":"updated","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1}
+    
+   
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.ERROR)
