@@ -41,6 +41,22 @@ def create_index(es_object,index_name):
                     },
                 }
             }
+        },
+        "mapping2": {
+            "members2": {
+                "dynamic2": "strict",
+                "properties2": {
+                    "name2": {
+                        "type": "text"
+                    },
+                    "position2": {
+                        "type": "text"
+                    },
+                    "salary2": {
+                        "type": "integer"
+                    },
+                }
+            }
         }
     }
 
@@ -50,9 +66,9 @@ def create_index(es_object,index_name):
             es_object.indices.create(index=index_name, ignore=400, body=settings)
             print('Created Index')
         created = True
-    except Exception as ex:
+    except Exception as ex2:
         print("Index not created")
-        print(str(ex))
+        print(str(ex2))
     finally:
         return created
 
